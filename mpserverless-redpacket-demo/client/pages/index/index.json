@@ -1,0 +1,11 @@
+{
+  "defaultTitle": "低碳出行抢红包",
+  "usingComponents":{
+    "modal": "mini-antui/es/modal/index"
+  },
+  "transparentTitle": "always",
+  "titleBarColor": "#CF3A3F",
+  "window": {
+    "transparentTitle": "none"
+  }
+}

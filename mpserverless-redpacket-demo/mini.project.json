@@ -1,0 +1,6 @@
+{
+  "cloud": {
+    "type": "miniappServerless"
+  },
+  "miniprogramRoot": "./client"
+}
