@@ -1,0 +1,11 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/photo/index",
+    "pages/details/index",
+    "pages/add-file/index"
+  ],
+  "window": {
+    "defaultTitle": "My App"
+  }
+}

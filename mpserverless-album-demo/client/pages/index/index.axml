@@ -1,0 +1,35 @@
+<!-- 小程序收藏组件，更多高级用法请参考文档：https://docs.alipay.com/mini/component/component-favorite -->
+<view>
+  <tabs tabs="{{tabs}}" onTabClick="handleTab" onChange="handleTab" activeTab="{{activeTab}}" swipeable="{{false}}">
+    <block a:for="{{tabs}}">
+      <tab-content key="{{index}}" tabId="{{index}}" activeTab="{{activeTab}}" a:if="{{index === 1}}">
+        <view class="tab-content flex-center">
+          <view class="header" a:if="{{!isAuthorize}}">
+            <button class="user-info" onTap="getAuthorize" size="default" type="primary">授权用户信息</button>
+            <text>授权后才可正常使用相册功能</text>
+          </view>
+          <view class="header" a:elif="{{!userInfo}}">
+            <button class="user-info" open-type="getAuthorize" onGetAuthorize="getUserInfo" scope='userInfo' size="default" type="primary">登录</button>
+            <text>授权后才可正常使用相册功能</text>
+          </view>
+          <view class="header" a:else>
+            <image class="avatar" mode="scaleToFill" src="{{userInfo.avatar}}"/>
+            <text class="nick-name">{{userInfo.nickName}}</text>
+          </view>
+        </view>
+      </tab-content>
+      <tab-content key="{{index}}" tabId="{{index}}" activeTab="{{activeTab}}" a:elif="{{index === 0}}">
+        <view class="index-page flex">
+          <view a:for="{{files}}" onTap="onFile" data-value="{{item}}" class="box flex-center-column">
+            <image mode="scaleToFill" class="photo-png" src="../assets/photo.png"/>
+            <text class="name">{{item.name}}</text>
+          </view>
+          <view onTap="onAdd" class="box flex-center-column">
+            <image mode="scaleToFill" class="photo-png" src="../assets/add-file.png"/>
+            <text class="name">新建相册</text>
+          </view>
+        </view>
+      </tab-content>
+    </block>
+  </tabs>
+</view>

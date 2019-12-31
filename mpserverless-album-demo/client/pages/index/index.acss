@@ -1,0 +1,67 @@
+.index-page {
+  padding-bottom: 10rpx;
+  background-color: #f7f7f7;
+}
+
+
+.tab-content {
+  height: 500rpx;
+  background-color: #f7f7f7;
+}
+
+.user-info {
+  margin: 0 auto;
+  margin-bottom: 20rpx;
+  font-size: 28rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  width: 300rpx;
+}
+
+.avatar {
+  height: 120rpx;
+  width: 120rpx;
+  border-radius: 60rpx;
+  display: block;
+  border: 1px solid #444444;
+  margin: 0 auto;
+  margin-bottom: 20rpx;
+}
+
+.header {
+  text-align: center;
+}
+
+.add-file {
+  height: 80rpx;
+  width: 80rpx;
+}
+
+.box {
+  height: 300rpx;
+  width: 300rpx;
+  margin-top: 50rpx;
+  box-shadow: 0 2px 20px 0 rgba(208, 208, 208, 0.50);
+}
+
+.photo-png {
+  height: 200rpx;
+  width: 200rpx;
+}
+
+.box:nth-of-type(2n+1) {
+  margin-left: 50rpx;
+}
+
+.box:nth-of-type(2n+2) {
+  margin-left: 50rpx;
+}
+
+.name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 280rpx;
+  text-align: center;
+  margin-top: 20rpx;
+}

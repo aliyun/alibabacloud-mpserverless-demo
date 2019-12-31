@@ -1,0 +1,24 @@
+<!-- 小程序收藏组件，更多高级用法请参考文档：https://docs.alipay.com/mini/component/component-favorite -->
+<view>
+  <textarea onBlur="bindTextAreaBlur" placeholder="填写备注(可以不填)" />
+</view>
+<view class="index-page flex">
+  <view a:for="{{imgs}}" a:for-index="idx" class="box">
+    <image class="remove" data-value="{{idx}}" onTap="onRemove" src="../assets/remove.png" />
+    <image onTap="onImg" data-value="{{item}}" mode="aspectFill" class="img" src="{{item}}"/>
+  </view>
+  <view class="box flex-center">
+    <view onTap="attach" class="flex-center-column">
+      <image class="add" mode="scaleToFill" src="../assets/add.png"/>
+    </view>
+  </view>
+  <button onTap="submit" class="submit" type="primary">上传照片</button>
+  <modal show="{{modalOpened}}" onModalClick="onModalClose" onModalClose="onModalClose">
+    <view slot="header">提示</view>
+		{{text}}
+    <view slot="footer">确定</view>
+  </modal>
+</view>
+
+<modal show="{{isOpenModal}}" onModalClose="onModalClose" topImage="{{url}}" topImageSize="lg" closeType="1">
+</modal>

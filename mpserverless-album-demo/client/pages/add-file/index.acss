@@ -1,0 +1,14 @@
+input {
+  width: 680rpx;
+  margin-top: 30rpx;
+  padding: 10rpx 4rpx;
+  font-size: 28rpx;
+}
+
+.submit {
+  width: 680rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 34rpx;
+  margin-top: 50rpx;
+}

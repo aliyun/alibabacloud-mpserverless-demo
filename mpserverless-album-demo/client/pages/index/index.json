@@ -1,0 +1,8 @@
+{
+  "defaultTitle": "个人相册-开发者云",
+  "usingComponents":{
+    "modal": "mini-antui/es/modal/index",
+    "tabs": "mini-antui/es/tabs/index",
+    "tab-content": "mini-antui/es/tabs/tab-content/index"
+  }
+}

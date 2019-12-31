@@ -1,0 +1,5 @@
+<!-- 小程序收藏组件，更多高级用法请参考文档：https://docs.alipay.com/mini/component/component-favorite -->
+<view class="flex-center-column">
+  <input class="photo-name" onInput="bindKeyInput" placeholder="请输入相册名"/>
+  <button class="submit" size="default" onTap="onSubmit" type="primary">提交</button>
+</view>

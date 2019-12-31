@@ -1,0 +1,9 @@
+functions:
+  getUserInfo:
+    handler: handlers/alipayAPI
+  getAllCollectionNames:
+    handler: handlers/basementService
+  getArguments:
+    handler: handlers/invokeArgs
+  getPageContent:
+    handler: handlers/http

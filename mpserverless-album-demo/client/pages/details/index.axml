@@ -1,0 +1,18 @@
+<!-- 小程序收藏组件，更多高级用法请参考文档：https://docs.alipay.com/mini/component/component-favorite -->
+<view class="details-page flex">
+  <view a:for="{{imgs}}" class="box">
+    <view class="flex">
+      <image onTap="onImg" data-value="{{child}}" a:for="{{item.urls}}" a:for-item="child" mode="aspectFill" class="img" src="{{child}}"/>
+    </view>
+    <text>{{item.details}}</text>
+  </view>
+  <button onTap="onAdd" class="submit" type="primary">添加照片</button>
+  <view class="flex-center none-header" a:if="{{imgs.length === 0}}">
+    <view class="flex-center-column">
+      <image class="none" mode="scaleToFill" src="../assets/none.png"/>
+      <text>无照片</text>
+    </view>
+  </view>
+</view>
+<modal show="{{isOpenModal}}" onModalClose="onModalClose" topImage="{{url}}" topImageSize="lg" closeType="1">
+</modal>
