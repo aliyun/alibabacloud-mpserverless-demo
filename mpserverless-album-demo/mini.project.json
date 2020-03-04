@@ -1,5 +1,5 @@
 {
   "cloud": {
-    "type": "BASEMENT"
+    "type": "miniappServerless"
   }
 }

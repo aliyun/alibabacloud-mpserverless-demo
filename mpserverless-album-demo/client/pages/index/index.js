@@ -1,4 +1,4 @@
-const { mpserverless } = getApp()
+const { mpserverless, cloud } = getApp()
 
 Page({
   data: {
@@ -70,43 +70,38 @@ Page({
   async getUserInfo() {
     await my.getAuthCode({
       scopes: ['auth_base'],
-      success: (res) => {
-        console.log(res.authCode)
-        mpserverless.function.invoke('userinfo', {
-          code: res.authCode
-        }).then(rst => {
-          const userId = JSON.parse(rst.result.message).userId
-          my.getOpenUserInfo({
-            scopes: 'auth_user',
-            success: async (data) => {
-              console.log(data)
-              let result
-              try {
-                result = { ...JSON.parse(data.response).response, userId }
-              } catch (err) {
-                result = { ...data, userId }
-              }
-              this.setData({
-                userInfo: result
-              })
-              const findUser = await mpserverless.db.collection('users').findOne({ userId })
-              if (!findUser.result) {
-                await mpserverless.db.collection('users').insertOne(result)
-              }
-              my.setStorage({
-                key: 'userInfo',
-                data: result,
-              });
-            },
-          });
-        })
+      success: async (res) => {
+        const tokenResult = await cloud.base.oauth.getToken(res.authCode);
+        const userId = tokenResult.userId;
+        my.getOpenUserInfo({
+          scopes: 'auth_user',
+          success: async (data) => {
+            let result
+            try {
+              result = { ...JSON.parse(data.response).response, userId }
+            } catch (err) {
+              result = { ...data, userId }
+            }
+            this.setData({
+              userInfo: result
+            })
+            const findUser = await mpserverless.db.collection('users').findOne({ userId })
+            if (!findUser.result) {
+              await mpserverless.db.collection('users').insertOne(result)
+            }
+            my.setStorage({
+              key: 'userInfo',
+              data: result,
+            });
+          },
+        });
       }
     })
   },
   /**
    * @memberof Tab
    */
-  handleTab({ index }) {
+  async handleTab({ index }) {
     if (!this.data.userInfo) {
       // 未授权提示先授权
       my.alert({
@@ -115,6 +110,12 @@ Page({
         buttonText: '我知道了',
       });
       return;
+    }
+    if (index === 0) {
+      const result = await mpserverless.db.collection('files').find({ userId: this.data.userInfo.userId })
+      this.setData({
+        files: result.result || []
+      })
     }
     this.setData({
       activeTab: index,

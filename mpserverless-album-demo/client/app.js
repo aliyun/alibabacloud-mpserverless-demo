@@ -1,33 +1,27 @@
 import MPServerless from '@alicloud/mpserverless-sdk';
+import cloud from 'alipay-serverless-sdk';
 
-const mpserverless = new MPServerless({
+my.serverless = my.serverless || new MPServerless({
   uploadFile: my.uploadFile,
   request: my.request,
   getAuthCode: my.getAuthCode,
 }, {
-  appId: '****************', // 小程序应用标识
-  spaceId: '*******************', // 服务空间标识
-  clientSecret: '*****************', // 服务空间 secret key
-  endpoint: '***************' // 服务空间地址，从小程序Serverless控制台处获得
+  appId: '******',
+  spaceId: '******',
+  clientSecret: '******',
+  endpoint: '******',
 });
 
+// 必须要初始化哦~cloud 是一个单例，初始化一次 App 引入均可生效
+cloud.init(my.serverless);
+
 App({
-  mpserverless,
+  mpserverless: my.serverless,
+  cloud: cloud,
   async onLaunch(options) {
-    // 第一次打开
-    // options.query == {number:1}
-    const res = my.getStorageSync({ key: 'userInfo' });
-    if (res.data) {
-      // 本地已有数据
-      await mpserverless.user.authorize({
-        authProvider: 'alipay_openapi',
-        // authType: 'anonymous'
-      })
-    }
-    console.info('App onLaunch');
-  },
-  onShow(options) {
-    // 从后台被 scheme 重新打开
-    // options.query == {number:1}
+    var result = await my.serverless.user.authorize({
+      authProvider: 'alipay_openapi',
+    });
+    console.log('基础授权结果:' + result);
   },
 });

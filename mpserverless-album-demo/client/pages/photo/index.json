@@ -1,5 +1,5 @@
 {
-  "defaultTitle": "个人相册-开发者云",
+  "defaultTitle": "Modal",
   "usingComponents":{
     "modal": "mini-antui/es/modal/index"
   }
