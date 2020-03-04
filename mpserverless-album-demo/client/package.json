@@ -4,8 +4,8 @@
   "main": "",
   "license": "MIT",
   "dependencies": {
-    "@alicloud/mpserverless-sdk": "^2.2.3",
-    "@ant-basement/miniprogram-sdk": "^2.2.23",
+    "@alicloud/mpserverless-sdk": "^2.2",
+    "alipay-serverless-sdk": "0.0.4",
     "mini-antui": "^0.4.34",
     "regenerator-runtime": "^0.13.3"
   }

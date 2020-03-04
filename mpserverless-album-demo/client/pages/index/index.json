@@ -1,5 +1,5 @@
 {
-  "defaultTitle": "个人相册-开发者云",
+  "defaultTitle": "30分钟建相册",
   "usingComponents":{
     "modal": "mini-antui/es/modal/index",
     "tabs": "mini-antui/es/tabs/index",
